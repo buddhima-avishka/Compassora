@@ -10,11 +10,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/three": "^10.0.3",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.0",
+    "@react-three/postprocessing": "^3.0.4",
     "@tailwindcss/vite": "^4.1.17",
+    "gsap": "^3.13.0",
+    "leva": "^0.10.1",
+    "maath": "^0.10.8",
+    "postprocessing": "^6.38.0",
+    "r3f-perf": "^7.2.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-parallax": "^3.5.2",
-    "tailwindcss": "^4.1.17"
+    "react-spring": "^10.0.3",
+    "tailwindcss": "^4.1.17",
+    "three": "^0.181.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
