@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Parallax } from 'react-parallax';
-import image1 from '../assets/img/image2.jpg';
+import { assets } from '../assets/assets.js';
 import { Canvas } from '@react-three/fiber';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -39,7 +39,7 @@ function ImageOne() {
     <div className='relative h-[100vh]'>
       <Parallax 
         className='h-full bg-cover bg-center' 
-        bgImage={image1} 
+        bgImage={assets.heroImage} 
         strength={800}
         bgImageStyle={{
           objectFit: 'cover',
@@ -48,7 +48,7 @@ function ImageOne() {
         }}
       >
         <div className='flex items-center justify-center h-full'>
-          <h1 className='absolute top-20 text-white text-4xl font-bold z-10'>Explore</h1>
+          <h1 className='absolute mt-20 top-20 text-white text-4xl font-bold z-10'>Explore</h1>
           
           {/* <div ref={sceneRef} className='h-[80vh] w-[80vw]'>
             <Canvas>

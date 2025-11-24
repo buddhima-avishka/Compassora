@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Parallax } from "react-parallax";
-import image2 from "../assets/img/image1.png";
+import { assets, initialCards } from '../assets/assets.js';
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Scene from "./Scene";
-// import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,38 +14,14 @@ function ImageTwo() {
   const sceneRef = React.useRef(null);
   const [progress, setProgress] = useState(0);
 
-//   const initialCards = [
-//     {
-//       id: 1,
-//       name: "Jenn F.",
-//       role: "Marketing Director @ Square",
-//       text: "I feel like I've learned as much from X as I did completing my masters. It's the first thing I read every morning.",
-//       img: "https://i.pravatar.cc/150?img=47",
-//     },
-//     {
-//       id: 2,
-//       name: "Lara K.",
-//       role: "Product Designer @ Meta",
-//       text: "X completely changed how I'm learning. I look forward to reading the daily insights.",
-//       img: "https://i.pravatar.cc/150?img=32",
-//     },
-//     {
-//       id: 3,
-//       name: "Jon M.",
-//       role: "Team Lead @ Stripe",
-//       text: "X is free. If X was a paid product, I would pay without hesitation.",
-//       img: "https://i.pravatar.cc/150?img=12",
-//     },
-//   ];
+  const [cards, setCards] = useState(initialCards);
 
-//   const [cards, setCards] = useState(initialCards);
-
-//   function showNextCard() {
-//     setCards((prev) => {
-//       const [first, ...rest] = prev;
-//       return [...rest, first];
-//     });
-//   }
+  function showNextCard() {
+    setCards((prev) => {
+      const [first, ...rest] = prev;
+      return [...rest, first];
+    });
+  }
 
   useEffect(() => {
     gsap
@@ -77,7 +53,7 @@ function ImageTwo() {
   return (
     <Parallax
       className="relative h-[300vh] bg-cover bg-center bg-fixed"
-      bgImage={image2}
+      bgImage={assets.contentImage}
       strength={800}
     >
       <div ref={mainRef} className="flex items-center justify-center h-full">
@@ -110,15 +86,52 @@ function ImageTwo() {
         </div>
 
         {/* Second section - Next 100vh */}
-        <div className="absolute right-0 top-[100vh] w-full h-[100vh] flex items-center justify-end z-20">
-          <div className="mr-10 max-w-xl text-right">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              What do you know About Us
-            </h1>
-
-            <div className="space-y-3">
-              <h3 className="text-lg md:text-2xl lg:text-3xl text-white font-medium">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate in sint fugiat consequuntur asperiores velit blanditiis nam quis fuga obcaecati iure consectetur, a necessitatibus ea accusantium laudantium sapiente, facilis deleniti?</h3>
-            </div>
+        <div className="absolute top-[100vh] w-full h-[100vh] flex items-center justify-end z-20">
+          <div className="mr-80 max-w-xl relative h-[420px] flex justify-center items-center">
+            <AnimatePresence>
+            {cards.map((card, index) => (
+              <motion.div
+                key={card.id}
+                layout
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.4}
+                onDragEnd={(e, info) => {
+                  if (Math.abs(info.offset.x) > 120) {
+                    showNextCard();
+                  }
+                }}
+                onClick={showNextCard}
+                initial={{ opacity: 0, scale: 0.8, y: 40 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1, 
+                  y: 0,
+                  x: index * 20,
+                  rotate: (index - 1) * 8,
+                }}
+                exit={{ 
+                  opacity: 0, 
+                  scale: 0.8,
+                  x: -200,
+                  transition: { duration: 0.3 }
+                }}
+                transition={{ duration: 0.35 }}
+                className="absolute bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl rounded-3xl p-8 w-[320px] text-center cursor-pointer select-none hover:scale-105 transition-transform"
+                style={{ zIndex: 10 - index }}
+              >
+                <img
+                  src={card.img}
+                  className="w-full h-30 mx-auto mb-4 object-cover border border-white/20"
+                  alt={card.name}
+                />
+                <p className="text-sm text-gray-300 mb-4">{card.text}</p>
+                <p className="text-sm font-semibold text">
+                  {card.name}
+                </p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
           </div>
         </div>
 
@@ -135,39 +148,6 @@ function ImageTwo() {
           </div>
         </div>
 
-        {/* <div className="relative h-[420px] w-full max-w-4xl flex justify-center items-center overflow-hidden">
-          <AnimatePresence>
-            {cards.map((card, index) => (
-              <motion.div
-                key={card.id}
-                layout
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.4}
-                onDragEnd={(e, info) => {
-                  if (Math.abs(info.offset.x) > 120) {
-                    showNextCard();
-                  }
-                }}
-                initial={{ opacity: 0, scale: 0.8, y: 40 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.35 }}
-                className="absolute bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl rounded-3xl p-8 w-[320px] text-center cursor-grab active:cursor-grabbing select-none hover:scale-105 transition"
-                style={{ rotate: (index - 1) * 8, zIndex: 10 - index }}
-              >
-                <img
-                  src={card.img}
-                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border border-white/20"
-                />
-                <p className="text-sm text-gray-300 mb-4">{card.text}</p>
-                <p className="text-sm font-semibold text-purple-300">
-                  {card.name} – {card.role}
-                </p>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div> */}
       </div>
     </Parallax>
   );
