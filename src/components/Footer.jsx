@@ -35,16 +35,16 @@ function Footer() {
                     <div>
                         <h2 className="font-semibold mb-5" style={{ color: '#04471C' }}>Discover</h2>
                         <ul className="text-sm text-gray-500 space-y-2 list-none">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Adventures</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/adventures">Adventures</a></li>
                         </ul>
                     </div>
                     <div>
                         <h2 className="font-semibold mb-5" style={{ color: '#04471C' }}>Quick Links</h2>
                         <div className="text-sm text-gray-500 space-y-2 list-none">
                             <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="/login">Login</a></li>
                             <li><a href="#">Register</a></li>
                         </div>
                     </div>

@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
-import ImageOne from './components/ImageOne'
-import ImageTwo from './components/ImageTwo'
-import ImageThree from './components/ImageThree'
+import Home from './pages/Home'
+import About from './pages/About'
+import Adventures from './pages/Adventures'
+import Login from './pages/Login'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
+import { Routes, Route } from 'react-router-dom'
 
 
 function App() {
@@ -11,9 +13,12 @@ function App() {
   return (
     <div>
       <Navbar />
-      <ImageOne />
-      <ImageTwo />
-      <ImageThree />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/adventures" element={<Adventures />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
       <Footer/>
     </div>
   )

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { assets } from '../assets/assets.js';
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,16 +34,17 @@ function Navbar() {
         </a>
 
         {/* Desktop Menu */}
+        
         <div className="hidden md:flex items-center gap-6 ml-12">
-          <a href="#" className="relative overflow-hidden h-6 group">
+          <a href="/" className="relative overflow-hidden h-6 group">
             <span className="block group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#0A9548' }}>Home</span>
             <span className="block absolute top-full left-0 group-hover:translate-y-[-100%] transition-transform duration-300" style={{ color: '#16DB65' }}>Home</span>
           </a>
-          <a href="#" className="relative overflow-hidden h-6 group">
+          <a href="/adventures" className="relative overflow-hidden h-6 group">
             <span className="block group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#0A9548' }}>Adventures</span>
             <span className="block absolute top-full left-0 group-hover:translate-y-[-100%] transition-transform duration-300" style={{ color: '#16DB65' }}>Adventures</span>
           </a>
-          <a href="#" className="relative overflow-hidden h-6 group">
+          <a href="/about" className="relative overflow-hidden h-6 group">
             <span className="block group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#0A9548' }}>About</span>
             <span className="block absolute top-full left-0 group-hover:translate-y-[-100%] transition-transform duration-300" style={{ color: '#16DB65' }}>About</span>
           </a>
@@ -49,7 +52,7 @@ function Navbar() {
 
         {/* Desktop Buttons */}
         <div className="hidden ml-auto md:flex items-center gap-4">
-          <button className="relative border border-white/20 px-6 py-2 rounded-full text-sm font-medium text-white transition-all duration-300 overflow-hidden group hover:border-transparent hover:shadow-[0_0_30px_rgba(4,71,28,0.6)]">
+          <button onClick={() => navigate('/login')} className="relative border border-white/20 px-6 py-2 rounded-full text-sm font-medium text-white transition-all duration-300 overflow-hidden group hover:border-transparent hover:shadow-[0_0_30px_rgba(4,71,28,0.6)]">
             <span className="relative z-10  transition-colors duration-300">Login</span>
             <div className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" style={{ backgroundColor: '#0A9548' }} />
           </button>
@@ -78,7 +81,7 @@ function Navbar() {
         }`}>
           <div className="flex flex-col items-center gap-6 py-8">
             <a 
-              href="#" 
+              href="/" 
               className="text-lg transition-colors duration-300 transform hover:scale-110"
               onMouseEnter={(e) => e.currentTarget.style.color = '#16DB65'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#ffffffff'}
@@ -87,7 +90,7 @@ function Navbar() {
               Home
             </a>
             <a 
-              href="#" 
+              href="/adventures" 
               className="text-lg transition-colors duration-300 transform hover:scale-110"
               onMouseEnter={(e) => e.currentTarget.style.color = '#16DB65'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#ffffffff'}
@@ -96,7 +99,7 @@ function Navbar() {
               Adventures
             </a>
             <a 
-              href="#" 
+              href="/about" 
               className="text-lg transition-colors duration-300 transform hover:scale-110"
               onMouseEnter={(e) => e.currentTarget.style.color = '#16DB65'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#ffffffff'}
@@ -106,7 +109,7 @@ function Navbar() {
             </a>
             
             <div className="flex flex-col gap-3 mt-4 w-full px-8">
-              <button className="relative border border-white/20 px-6 py-3 rounded-full text-sm font-medium text-white transition-all duration-300 overflow-hidden group hover:border-transparent hover:shadow-[0_0_30px_rgba(4,71,28,0.6)]">
+              <button onClick={() => navigate('/login')} className="relative border border-white/20 px-6 py-3 rounded-full text-sm font-medium text-white transition-all duration-300 overflow-hidden group hover:border-transparent hover:shadow-[0_0_30px_rgba(4,71,28,0.6)]">
                 <span className="relative z-10 transition-colors duration-300">Login</span>
                 <div className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" style={{ backgroundColor: '#0A9548' }} />
               </button>
