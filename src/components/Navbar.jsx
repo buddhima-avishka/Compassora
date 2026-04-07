@@ -38,15 +38,15 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-6 ml-12">
           <a href="/" className="relative overflow-hidden h-6 group">
             <span className="block group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#0A9548' }}>Home</span>
-            <span className="block absolute top-full left-0 group-hover:translate-y-[-100%] transition-transform duration-300" style={{ color: '#16DB65' }}>Home</span>
+            <span className="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#16DB65' }}>Home</span>
           </a>
           <a href="/adventures" className="relative overflow-hidden h-6 group">
             <span className="block group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#0A9548' }}>Adventures</span>
-            <span className="block absolute top-full left-0 group-hover:translate-y-[-100%] transition-transform duration-300" style={{ color: '#16DB65' }}>Adventures</span>
+            <span className="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#16DB65' }}>Adventures</span>
           </a>
           <a href="/about" className="relative overflow-hidden h-6 group">
             <span className="block group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#0A9548' }}>About</span>
-            <span className="block absolute top-full left-0 group-hover:translate-y-[-100%] transition-transform duration-300" style={{ color: '#16DB65' }}>About</span>
+            <span className="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-300" style={{ color: '#16DB65' }}>About</span>
           </a>
         </div>
 
@@ -56,7 +56,7 @@ function Navbar() {
             <span className="relative z-10  transition-colors duration-300">Login</span>
             <div className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" style={{ backgroundColor: '#0A9548' }} />
           </button>
-          <button className="relative px-6 py-2 rounded-full text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(10,149,72,0.6)] hover:scale-105 overflow-hidden group" style={{ backgroundColor: '#0A9548' }}>
+          <button onClick={() => navigate('/register')} className="relative px-6 py-2 rounded-full text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(10,149,72,0.6)] hover:scale-105 overflow-hidden group" style={{ backgroundColor: '#0A9548' }}>
             <span className="relative z-10">Register</span>
           </button>
         </div>
@@ -113,7 +113,7 @@ function Navbar() {
                 <span className="relative z-10 transition-colors duration-300">Login</span>
                 <div className="absolute inset-0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" style={{ backgroundColor: '#0A9548' }} />
               </button>
-              <button className="px-6 py-3 rounded-full text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(10,149,72,0.6)]" style={{ backgroundColor: '#0A9548' }}>
+              <button onClick={() => navigate('/register')} className="px-6 py-3 rounded-full text-sm font-medium text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(10,149,72,0.6)]" style={{ backgroundColor: '#0A9548' }}>
                 Register
               </button>
             </div>

@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Adventures from './pages/Adventures'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import { Routes, Route } from 'react-router-dom'
@@ -18,6 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/adventures" element={<Adventures />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
       <Footer/>
     </div>

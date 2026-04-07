@@ -45,7 +45,7 @@ function Footer() {
                         <div className="text-sm text-gray-500 space-y-2 list-none">
                             <li><a href="#">Gallery</a></li>
                             <li><a href="/login">Login</a></li>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="/register">Register</a></li>
                         </div>
                     </div>
                     <div>
